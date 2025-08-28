@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Navbar/>
-      <Medio  greeting="¡Bienvenido a MiTienda!" />
+      <Medio  greeting="¡Bienvenido a Estudio Fem!" />
       <Futer/>
     </>
   ) 

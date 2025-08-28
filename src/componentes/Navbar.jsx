@@ -6,7 +6,7 @@ function Navbar () {
     <nav>
         <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src={Logo} alt="Logo MiTienda" style={{ height: '40px', marginRight: '10px' }} />
-            <h2>MiTienda</h2>
+            <h2>Estudio Fem</h2>
         </div>
         <ul style={{ listStyle: 'none', display: 'flex', gap: '15px' }}>
             <li><a href="#">Inicio</a></li>
