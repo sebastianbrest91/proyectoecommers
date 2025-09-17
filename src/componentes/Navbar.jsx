@@ -1,21 +1,23 @@
-import Cartwidget from './Cartwidget.jsx'
-import Logo from '../assets/logofem.jpg'
+import { Link } from 'react-router-dom';
+import Cartwidget from './Cartwidget.jsx';
+import Logo from '../assets/logofem.jpg';
+import './Navbar.css';
 
 function Navbar () {
     return (
-    <nav>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={Logo} alt="Logo MiTienda" style={{ height: '40px', marginRight: '10px' }} />
-            <h2>Estudio Fem</h2>
-        </div>
-        <ul style={{ listStyle: 'none', display: 'flex', gap: '15px' }}>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
-        <Cartwidget />
-    </nav>
-    )
+        <nav>
+            <div className="logo-container">
+                <img src={Logo} alt="Logo" />
+                <h2>Estudio Fem</h2>
+            </div>
+            <ul>
+                <li><Link to="/section/inicio">Inicio</Link></li>
+                <li><Link to="/section/productos">Productos</Link></li>
+                <li><Link to="/section/contacto">Contacto</Link></li>
+            </ul>
+            <Cartwidget />
+        </nav>
+    );
 }
 
-export default Navbar
+export default Navbar;

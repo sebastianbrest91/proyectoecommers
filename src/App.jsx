@@ -1,21 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './componentes/Navbar'
-import Medio from './componentes/Medio'
-import Futer from './componentes/Futer'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from './componentes/Navbar';
+import Medio from './componentes/Medio';
+import Futer from './componentes/Futer';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Navbar/>
-      <Medio  greeting="¡Bienvenido a Estudio Fem!" />
-      <Futer/>
-    </>
-  ) 
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Medio section="inicio" />} />
+        <Route path="/section/:sectionId" element={<Medio />} />
+        <Route path="/section/:sectionId/:categoriaId" element={<Medio />} />
+        <Route path="*" element={<h2>404 - No funciona</h2>} />
+      </Routes>
+      <Futer />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
