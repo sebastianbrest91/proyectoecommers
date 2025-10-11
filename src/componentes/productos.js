@@ -1,17 +1,12 @@
-import sahumerio from '../assets/sahumerio.jpg';
-import rutinaexfoliante from '../assets/rutinaexfoliante.jpeg';
-import rutinaacne from '../assets/rutinaacne.jpeg';
-import rutinapielgrasa from '../assets/rutinapielgrasa.jpeg';
-import rutinapielseca from '../assets/rutinapielseca.jpeg';
-
-const products = [
+export const productos = [
     {
     id: "1",
     name: "Sahumerio Lavanda",
     price: 2000,
     category: "sahumerios",
     description: "Sahumerio natural de lavanda, perfecto para relajarte y purificar el ambiente.",
-    image: sahumerio,
+    image: "https://s3i.nyc3.cdn.digitaloceanspaces.com/v1/product/101W/ed72dExeXBdHKAIvwP13H6qDWarC7JqektTHg3qo.jpeg",
+    stock: 5
     },
     {
     id: "2",
@@ -19,7 +14,8 @@ const products = [
     price: 2500,
     category: "sahumerios",
     description: "Sahumerio de Palo Santo, conocido por sus propiedades purificadoras y espirituales.",
-    image: sahumerio,
+    image: "https://s3i.nyc3.cdn.digitaloceanspaces.com/v1/product/101W/ed72dExeXBdHKAIvwP13H6qDWarC7JqektTHg3qo.jpeg",
+    stock: 5
     },
     {
     id: "3",
@@ -27,7 +23,8 @@ const products = [
     price: 2200,
     category: "sahumerios",
     description: "Sahumerio de sándalo, ideal para meditación y armonización del espacio.",
-    image: sahumerio,
+    image: "https://s3i.nyc3.cdn.digitaloceanspaces.com/v1/product/101W/ed72dExeXBdHKAIvwP13H6qDWarC7JqektTHg3qo.jpeg",
+    stock: 5
     },
     {
     id: "4",
@@ -35,7 +32,8 @@ const products = [
     price: 2300,
     category: "sahumerios",
     description: "Sahumerio de eucalipto, fresco y energizante para revitalizar ambientes.",
-    image: sahumerio,
+    image: "https://s3i.nyc3.cdn.digitaloceanspaces.com/v1/product/101W/ed72dExeXBdHKAIvwP13H6qDWarC7JqektTHg3qo.jpeg",
+    stock: 5
     },
     {
     id: "5",
@@ -43,7 +41,8 @@ const products = [
     price: 55000,
     category: "cremas",
     description: "Incluye gel exfoliante y crema regeneradora.",
-    image: rutinaexfoliante,
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_676625-MLA92193659724_092025-F.webp",
+    stock: 5
     },
     {
     id: "6",
@@ -51,7 +50,8 @@ const products = [
     price: 62000,
     category: "cremas",
     description: "Tratamiento completo para piel con tendencia acneica.",
-    image: rutinaacne,
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_676625-MLA92193659724_092025-F.webp",
+    stock: 5
     },
     {
     id: "7",
@@ -59,7 +59,8 @@ const products = [
     price: 60000,
     category: "cremas",
     description: "Limpieza profunda y control de brillo facial.",
-    image: rutinapielgrasa,
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_676625-MLA92193659724_092025-F.webp",
+    stock: 5
     },
     {
     id: "8",
@@ -67,24 +68,7 @@ const products = [
     price: 58000,
     category: "cremas",
     description: "Hidratación intensiva para piel seca y sensible.",
-    image: rutinapielseca,
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_676625-MLA92193659724_092025-F.webp",
+    stock: 0
     },
 ];
-
-export const getProducts = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(products), 1000);
-    });
-};
-
-export const getProductById = (id) => {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(products.find((p) => p.id === id)), 1000);
-    });
-};
-
-export const getProductsByCategory = (categoryId) => {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(products.filter((p) => p.category === categoryId)), 1000);
-    });
-};

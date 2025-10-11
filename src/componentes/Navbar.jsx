@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import Cartwidget from './Cartwidget.jsx';
+import { Link, NavLink } from 'react-router-dom';
+import CartWidget from './Cartwidget';
 import Logo from '../assets/logofem.jpg';
 import './Navbar.css';
 
@@ -15,7 +15,9 @@ function Navbar () {
                 <li><Link to="/section/productos">Productos</Link></li>
                 <li><Link to="/section/contacto">Contacto</Link></li>
             </ul>
-            <Cartwidget />
+            <div>
+                <NavLink to="/cart"><CartWidget /></NavLink>
+            </div>
         </nav>
     );
 }
