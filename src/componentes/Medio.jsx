@@ -36,15 +36,13 @@ const Medio = ({ section }) => {
 const { addToCart } = useCart();
 
 const handleAgregarAlCarrito = async (producto) => {
+    console.log("Intentando agregar al carrito:", producto);
     const agregado = await addToCart(producto, 1);
-
     if (agregado) {
         const data = categoriaId
             ? await getProductsByCategoryFromFirebase(categoriaId)
             : await getProductsFromFirebase();
         setProductos(data);
-    } else {
-        alert("Sin Stock");
     }
 };
 

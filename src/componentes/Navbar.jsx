@@ -2,8 +2,10 @@ import { Link, NavLink } from 'react-router-dom';
 import CartWidget from './Cartwidget';
 import Logo from '../assets/logofem.jpg';
 import './Navbar.css';
+import { useCart } from '../context/CartContext';
 
 function Navbar () {
+    const { totalItems } = useCart();
     return (
         <nav>
             <div className="logo-container">
@@ -16,7 +18,9 @@ function Navbar () {
                 <li><Link to="/section/contacto">Contacto</Link></li>
             </ul>
             <div>
-                <NavLink to="/cart"><CartWidget /></NavLink>
+                <NavLink to="/cart">
+                    <CartWidget totalItems={totalItems} />
+                </NavLink>
             </div>
         </nav>
     );

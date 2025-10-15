@@ -48,37 +48,57 @@ export async function seedProducts(productos) {
 
 export async function restarStock(productoId, cantidad) {
     const itemRef = doc(db, "items", productoId);
-    const itemSnap = await getDoc(itemRef);
+    try {
+        const result = await runTransaction(db, async (transaction) => {
+            const itemSnap = await transaction.get(itemRef);
 
-    if (itemSnap.exists()) {
-        const currentStock = itemSnap.data().stock || 0;
+            if (!itemSnap.exists()) {
+                throw new Error("Producto no encontrado");
+            }
 
-        if (currentStock >= cantidad) {
-            await updateDoc(itemRef, {
+            const currentStock = itemSnap.data().stock || 0;
+            console.log(`Intentando restar ${cantidad} del stock actual ${currentStock} del producto ${productoId}`);
+
+            if (currentStock < cantidad) {
+                throw new Error("Stock insuficiente");
+            }
+
+            transaction.update(itemRef, {
                 stock: currentStock - cantidad
             });
-            return true;
-        } else {
-            console.warn("Stock insuficiente");
+            return currentStock - cantidad;
+        });
+        console.log(`Stock actualizado. Nuevo stock: ${result}`);
+        return true;
+    } catch (error) {
+        if (error.message === "Stock insuficiente") {
+            console.warn(error.message);
             return false;
         }
-    } else {
-        console.error("Producto no encontrado para restar stock");
+        console.error("Error en transacción restarStock:", error);
         return false;
     }
 }
 
 export async function devolverStock(productoId, cantidad) {
     const itemRef = doc(db, "items", productoId);
-    const itemSnap = await getDoc(itemRef);
+    try{
+        await runTransaction(db, async (transaction) => {
+            const itemSnap = await transaction.get(itemRef);
 
-    if (itemSnap.exists()) {
-        const currentStock = itemSnap.data().stock || 0;
-        await updateDoc(itemRef, {
-            stock: currentStock + cantidad
+            if (!itemSnap.exists()) {
+                throw new Error("Producto no encontrado");
+            }
+
+            const currentStock = itemSnap.data().stock || 0;
+
+            transaction.update(itemRef, {
+                stock: currentStock + cantidad
+            });
         });
         return true;
-    } else {
+    } catch (error) {
+        console.error("Error en transacción devolverStock:", error);
         return false;
     }
 }
